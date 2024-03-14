@@ -1,9 +1,10 @@
 function getFirstFiveRatings(ratings) {
-  return ratings.length >= 5 && ratings.slice(0, 5)
+  if(ratings.length < 5) return false
+  return ratings.slice(0, 5)
 }
 
 function sumFirstFiveRatings(ratings) {
-  const ratingsBool = !!ratings
+  const ratingsBool = Boolean(!ratings)
 
   if (ratingsBool) {
     const firstFiveRatings = getFirstFiveRatings(ratings)
@@ -13,7 +14,7 @@ function sumFirstFiveRatings(ratings) {
     let ratingsSum = 0;
 
     for (const rating of firstFiveRatings) {
-      ratingsSum += +rating
+      ratingsSum += Number(rating)
     }
 
     return { ratingsSum, created_at: +new Date() }
